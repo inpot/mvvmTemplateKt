@@ -25,10 +25,13 @@ version = properties("pluginVersion")
 
 // Configure project's dependencies
 repositories {
+    maven { url  = uri("https://maven.aliyun.com/repository/public")}
+    maven { url  = uri("https://maven.aliyun.com/repository/google")}
     mavenCentral()
 }
 dependencies {
     detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.17.1")
+    compileOnly(files("lib/wizard-template.jar"))
 }
 
 // Configure gradle-intellij-plugin plugin.
