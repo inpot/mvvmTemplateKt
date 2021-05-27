@@ -1,49 +1,47 @@
 package other.mvvm.activity.src
 
 fun mvvmAcitivityKt(
-        applicationPackage:String?,
+        moduleName:String,
+        appPackage:String,
         activityClass:String,
         layoutName:String,
+        homeAsUp:Boolean,
         packageName:String
 )="""
-package ${packageName}
+package ${(packageName)}
+
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import com.bigademo.baselib.base.BaseActivity
-import ${applicationPackage}.R
-import ${applicationPackage}.BR;
-import ${applicationPackage}.databinding.Activity${activityClass}Binding
-class ${activityClass}Activity : BaseActivity<${activityClass}ViewModel, Activity${activityClass}Binding>() {
-    override fun getContentView(): Int {
-        return R.layout.${layoutName}
+import app.base.BaseActivity
+import ${appPackage}.databinding.Activity${moduleName}Binding
+import ${(packageName)}.di.Dagger${moduleName}Contract_Comp
+import ${(packageName)}.di.${moduleName}Contract
+import ${(packageName)}.di.${moduleName}Module
+import javax.inject.Inject
+import ${appPackage}.R
+
+class ${activityClass}Activity : BaseActivity(),${moduleName}Contract.View {
+
+    @Inject
+    lateinit var vm: ${moduleName}VM
+
+    override fun buildComp() {
+        Dagger${moduleName}Contract_Comp.builder().activityComp(activityComp).${moduleName.decapitalize()}Module(${moduleName}Module(this))
+                .build().inject(this)
     }
 
-    override fun init(savedInstanceState: Bundle?) {
-        super.init(savedInstanceState)
-        isShowTopBar = false
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val binding:Activity${moduleName}Binding =  bindViewModel(R.layout.${layoutName},vm,${homeAsUp})
     }
 
-    override fun initViewModel() {
-        viewModel = ${activityClass}ViewModel()
-    }
-    /**
-     *	监听数据的变化
-     */
-    override fun observe() {
+    companion object {
+
+        fun actionStart(context: Context){
+            context.startActivity(Intent(context,${activityClass}::class.java))
+        }
 
     }
-    
-    /**
-     *  控件的点击事件
-     */
-    override fun onClick() {
-    }
-
-    override fun initData() {
-        super.initData()
-    }
-    override fun initVariableId(): Int {
-        TODO("Not yet implemented")
-    }
-    } 
-
+}
 """

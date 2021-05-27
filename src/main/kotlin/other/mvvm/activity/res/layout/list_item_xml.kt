@@ -1,6 +1,6 @@
-fun mvvmActivityXml(
+fun mvvmItemXml(
         packageName: String,
-        activityClass: String
+        moduleName: String
 ) = """
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -9,9 +9,9 @@ fun mvvmActivityXml(
 
     <data>
 
-        <import type="${escapeKotlinIdentifiers(packageName)}.${moduleName?cap_first}ListItemVM" />
+        <import type="${(packageName)}.${moduleName}ListItemVM" />
 
-        <variable name="vm" type="${moduleName?cap_first}ListItemVM" />
+        <variable name="vm" type="${moduleName}ListItemVM" />
 
     </data>
 

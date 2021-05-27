@@ -1,12 +1,10 @@
 package other.mvvm.activity.src
 
 fun mvvmSimplePageAdapterKt(
-        applicationPackage:String?,
-        activityClass:String,
-        layoutName:String,
+        moduleName:String,
         packageName:String
 )="""
-package ${escapeKotlinIdentifiers(packageName)}
+package ${(packageName)}
 
 import android.view.View
 <#if viewType=="recyclerView">
@@ -20,10 +18,10 @@ import app.base.mvvm.vm.PagerVM
 <#else>
 import app.base.mvvm.vm.BaseVM
 </#if>
-import ${escapeKotlinIdentifiers(packageName)}.di.${moduleName?cap_first}Contract
+import ${(packageName)}.di.${moduleName}Contract
 
 <#if viewType=="recyclerView">
-class ${moduleName?cap_first}VM() :BaseListVM<${moduleName?cap_first}Contract.Repository, ${moduleName?cap_first}Contract.View, T>(),OnItemClick<T>{
+class ${moduleName}VM() :BaseListVM<${moduleName}Contract.Repository, ${moduleName}Contract.View, T>(),OnItemClick<T>{
 
     init {
        adapter.onItemClick = this
@@ -40,12 +38,12 @@ class ${moduleName?cap_first}VM() :BaseListVM<${moduleName?cap_first}Contract.Re
 }
 
 <#elseif viewType=="topPager">
-class ${moduleName?cap_first}VM() :PagerVM<${moduleName?cap_first}Contract.Repository, ${moduleName?cap_first}Contract.View >(){
+class ${moduleName}VM() :PagerVM<${moduleName}Contract.Repository, ${moduleName}Contract.View >(){
 
 }
 
 <#else>
-class ${moduleName?cap_first}VM() :BaseVM<${moduleName?cap_first}Contract.Repository, ${moduleName?cap_first}Contract.View >(){
+class ${moduleName}VM() :BaseVM<${moduleName}Contract.Repository, ${moduleName}Contract.View >(){
 
 
 }

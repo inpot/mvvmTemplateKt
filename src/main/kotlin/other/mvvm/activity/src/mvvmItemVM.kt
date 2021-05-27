@@ -2,14 +2,12 @@
 package other.mvvm.activity.src
 
 fun mvvmItemKt(
-        applicationPackage:String?,
-        activityClass:String,
-        layoutName:String,
+        moduleName:String,
         packageName:String
 )="""
-package ${escapeKotlinIdentifiers(packageName)}
+package ${(packageName)}
 import app.base.mvvm.vm.list.BaseItemVM
 import app.base.view.OnItemClick
 
-class ${moduleName?cap_first}ListItemVM(data:T, onItemClick: OnItemClick<T>?) : BaseItemVM<T>(data)
+class ${moduleName}ListItemVM(data:T, onItemClick: OnItemClick<T>?) : BaseItemVM<T>(data)
 """

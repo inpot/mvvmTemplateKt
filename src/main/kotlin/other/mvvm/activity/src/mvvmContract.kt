@@ -1,32 +1,29 @@
 package other.mvvm.activity.src
 
-fun mvvmContractKt(
-        applicationPackage:String?,
+fun mvvmContract(
+        moduleName:String,
         activityClass:String,
-        layoutName:String,
         packageName:String
 )="""
-package ${escapeKotlinIdentifiers(packageName)}.di
+package ${(packageName)}.di
 
 import app.base.di.component.ActivityComp
 import app.base.di.scope.PerActivity
 import app.base.mvvm.repository.IRepository
 import app.base.mvvm.view.IView
-import ${escapeKotlinIdentifiers(packageName)}.${activityClass}
+import ${(packageName)}.${activityClass}
 import dagger.Component
 
-interface ${moduleName?cap_first}Contract {
+interface ${moduleName}Contract {
 
     @PerActivity
-    @Component(modules = [${moduleName?cap_first}Module::class],
+    @Component(modules = [${moduleName}Module::class],
             dependencies = [ActivityComp::class])
     interface Comp : ActivityComp {
-        fun inject(activity: ${activityClass})
+        fun inject(activity: ${activityClass}Activity)
     }
 
     interface View : IView
-
     interface Repository : IRepository
 }
-
 """
