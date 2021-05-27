@@ -21,24 +21,25 @@ val mvvmActivityTemplate
         val moduleName = stringParameter {
             name = "Module Name"
             default = "Main"
-            help = "只输入名字，不要包含Activity"
+            help = "Only Prefix , Do not contain \'VM\',\'Module\',\'Repo\',\'Contract\', Plugin will append it "
             constraints = listOf(Constraint.NONEMPTY)
+            suggest = { packageName.substring(packageName.indexOfLast { it == '.' }).capitalize()}
         }
 
         val activityClass = stringParameter {
             name = "Activity Class Name"
-            default = "${moduleName.value.capitalizeFirstWord()}"
-            help = "Class Name for Activity, do not contain \'Activity\'"
-            constraints = listOf(Constraint.LAYOUT, Constraint.UNIQUE, Constraint.NONEMPTY)
-            //suggest = { "${activityToLayout(M.toLowerCase())}" }
+            default = "Main"
+            help = "Prefix for Activity, do not contain \'Activity\', Plugin will append it"
+            constraints = listOf(Constraint.NONEMPTY,Constraint.CLASS)
+            suggest = {"${moduleName.value.capitalize()}"}
         }
 
         val activityTitle= stringParameter {
             name = "Title"
             default = "MainActivity"
             help = "Title for Activity"
-            constraints = listOf(Constraint.LAYOUT, Constraint.UNIQUE, Constraint.NONEMPTY)
-            suggest = { "${moduleName.value}" }
+            constraints = listOf(Constraint.NONEMPTY)
+            suggest = { "${activityClass.value}" }
         }
 
 
@@ -47,9 +48,9 @@ val mvvmActivityTemplate
             default = ActivityType.Simple
             help = "Choose a type, SimpleActivity,RecyclerViewActivity Or TabLayout"
         }
+
         val layoutName = stringParameter {
             name = "Layout Name"
-            default =  "${activityToLayout(activityClass.value.toLowerCase())}"
             help = "Layout Xml File Name"
             constraints = listOf(Constraint.LAYOUT, Constraint.UNIQUE, Constraint.NONEMPTY)
             suggest = { "${activityToLayout(activityClass.value.toLowerCase())}" }
@@ -61,7 +62,13 @@ val mvvmActivityTemplate
             help = "If true, the toolbar will have a back button"
         }
 
-        val packageName = defaultPackageNameParameter
+        val currentPkg= stringParameter {
+            name = "Package name"
+            visible = { !isNewModule }
+            default = "com.github.inpot"
+            constraints = listOf(Constraint.PACKAGE)
+            suggest = { packageName }
+        }
 
         widgets(
             TextFieldWidget(moduleName),
@@ -70,32 +77,21 @@ val mvvmActivityTemplate
             TextFieldWidget(layoutName),
             EnumWidget(activityType),
             CheckBoxWidget(homeAsUp),
-            PackageNameWidget(packageName)
+            PackageNameWidget(currentPkg)
         )
 //        thumb { File("logo.png") }
         recipe = { data: TemplateData ->
             mvvmActivityRecipe(
-                moduleName.value,//CapsFirst
+                moduleName.value.capitalize(),//CapsFirst
                 activityTitle.value,
-                activityClass.value,//CapsFirst
+                activityClass.value.capitalize(),//CapsFirst
                 layoutName.value,//without Caps Letter,and use "_" to connect word
                 homeAsUp.value,
                 activityType.value,
-                packageName.value,
+                currentPkg.value,
                 data as ModuleTemplateData
             )
         }
     }
-
-
-val defaultPackageNameParameter
-    get() = stringParameter {
-        name = "Package name"
-        visible = { !isNewModule }
-        default = "com.mycompany.myapp"
-        constraints = listOf(Constraint.PACKAGE)
-        suggest = { packageName }
-    }
-
 
 enum class ActivityType{ Simple,RecyclerView,TabLayout }

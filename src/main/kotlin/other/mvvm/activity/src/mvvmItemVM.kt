@@ -1,7 +1,7 @@
 
 package other.mvvm.activity.src
 
-fun mvvmItemKt(
+fun mvvmListItemVM(
         moduleName:String,
         packageName:String
 )="""
