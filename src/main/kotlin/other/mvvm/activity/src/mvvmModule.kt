@@ -101,7 +101,7 @@ class ${moduleName}Module(val view:${moduleName}Contract.View){
             is FragmentActivity -> ViewModelProviders.of(view).get(${moduleName}VM::class.java)
             else -> ${moduleName}VM()
         }
-        vm.initialize(repository,view, ${moduleName}PagerAdapter())
+        vm.initialize(repository,view, ${moduleName}PagerAdapter(fragmentManager))
         return vm
     }
 }
