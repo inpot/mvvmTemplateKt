@@ -23,14 +23,14 @@ val mvvmActivityTemplate
             default = "Main"
             help = "Only Prefix , Do not contain \'VM\',\'Module\',\'Repo\',\'Contract\', Plugin will append it "
             constraints = listOf(Constraint.NONEMPTY)
-            suggest = { packageName.substring(packageName.indexOfLast { it == '.' }).capitalize()}
+            //suggest = { packageName.substring(packageName.indexOfLast { it == '.' }).capitalize()}
         }
 
         val activityClass = stringParameter {
             name = "Activity Class Name"
             default = "Main"
             help = "Prefix for Activity, do not contain \'Activity\', Plugin will append it"
-            constraints = listOf(Constraint.NONEMPTY,Constraint.CLASS)
+            constraints = listOf(Constraint.NONEMPTY)
             suggest = {"${moduleName.value.capitalize()}"}
         }
 
@@ -52,6 +52,7 @@ val mvvmActivityTemplate
         val layoutName = stringParameter {
             name = "Layout Name"
             help = "Layout Xml File Name"
+            default = "${activityToLayout(activityClass.value.toLowerCase())}"
             constraints = listOf(Constraint.LAYOUT, Constraint.UNIQUE, Constraint.NONEMPTY)
             suggest = { "${activityToLayout(activityClass.value.toLowerCase())}" }
         }
@@ -62,13 +63,7 @@ val mvvmActivityTemplate
             help = "If true, the toolbar will have a back button"
         }
 
-        val currentPkg= stringParameter {
-            name = "Package name"
-            visible = { !isNewModule }
-            default = "com.github.inpot"
-            constraints = listOf(Constraint.PACKAGE)
-            suggest = { packageName }
-        }
+        val currentPkg = defaultPackageNameParameter
 
         widgets(
             TextFieldWidget(moduleName),
@@ -93,5 +88,13 @@ val mvvmActivityTemplate
             )
         }
     }
+
+val defaultPackageNameParameter get() = stringParameter {
+            name = "Package name"
+            visible = { !isNewModule }
+            default = "com.mycompany.myapp"
+            constraints = listOf(Constraint.PACKAGE)
+            suggest = { packageName }
+        }
 
 enum class ActivityType{ Simple,RecyclerView,TabLayout }
