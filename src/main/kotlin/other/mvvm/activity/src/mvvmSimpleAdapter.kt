@@ -17,7 +17,7 @@ import ${appPackage}.R
 class ${moduleName}ListAdapter : BaseListAdapter<T>() {
 
     override fun onCreateItemBinding(layoutInflater: LayoutInflater, parent: ViewGroup): ViewDataBinding
-            = DataBindingUtil.inflate(layoutInflater, R.layout.list_item_${moduleName}, parent, false)
+            = DataBindingUtil.inflate(layoutInflater, R.layout.list_item_${moduleName.toLowerCase()}, parent, false)
 
     override fun onCreateVM(position: Int, data:T) = ${moduleName}ListItemVM(data, onItemClick)
 

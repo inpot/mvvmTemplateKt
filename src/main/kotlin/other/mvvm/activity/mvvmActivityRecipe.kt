@@ -56,7 +56,7 @@ fun RecipeExecutor.mvvmActivityRecipe(
             save(mvvmListItemVM(moduleName, packageName), srcOut.resolve("${moduleName}ItemVM.${ktOrJavaExt}"))
             save(mvvmListXml(packageName,moduleName),resOut.resolve("layout/${layout}.xml"))
             save(mvvmSimpleAdapter(appPkg,moduleName, packageName), srcOut.resolve("${moduleName}ListAdapter.${ktOrJavaExt}"))
-            save(mvvmItemXml(packageName,moduleName),resOut.resolve("layout/list_item_${moduleName}.xml"))
+            save(mvvmItemXml(packageName,moduleName),resOut.resolve("layout/list_item_${moduleName.toLowerCase()}.xml"))
             save(mvvmListModule(moduleName, packageName), srcOut.resolve("di/${moduleName}Module.${ktOrJavaExt}"))
         }
     }
