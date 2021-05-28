@@ -39,7 +39,7 @@ class ${activityClass}Activity : BaseActivity(),${moduleName}Contract.View {
     companion object {
 
         fun actionStart(context: Context){
-            context.startActivity(Intent(context,${activityClass}::class.java))
+            context.startActivity(Intent(context,${activityClass}Activity::class.java))
         }
 
     }
