@@ -10,7 +10,7 @@ import app.base.mvvm.vm.BaseVM
 import ${(packageName)}.di.${moduleName}Contract
 
 class ${moduleName}VM() :BaseVM<${moduleName}Contract.Repository, ${moduleName}Contract.View >(){
-TODO()
+//TODO
 }
 """
 
@@ -24,7 +24,7 @@ import app.base.mvvm.vm.PagerVM
 import ${(packageName)}.di.${moduleName}Contract
 
 class ${moduleName}VM() :PagerVM<${moduleName}Contract.Repository, ${moduleName}Contract.View >(){
-TODO()
+//TODO()
 }
 """
 fun mvvmListVM(moduleName: String, packageName: String)="""

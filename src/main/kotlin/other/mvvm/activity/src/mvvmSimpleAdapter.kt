@@ -1,7 +1,7 @@
 package other.mvvm.activity.src
 
 fun mvvmSimpleAdapter(
-        applicationPackage:String?,
+        appPackage:String,
         moduleName:String,
         packageName:String
 )="""
@@ -12,7 +12,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import app.base.mvvm.vm.list.BaseListAdapter
-import ${applicationPackage}.R
+import ${appPackage}.R
 
 class ${moduleName}ListAdapter : BaseListAdapter<T>() {
 

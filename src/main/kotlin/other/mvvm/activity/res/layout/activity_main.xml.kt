@@ -2,7 +2,6 @@ package other.mvvm.activity.res.layout
 
 fun mvvmSimpleXml(
         packageName: String,
-        activityPrefix: String,
         moduleName:String
 
 ) = """
@@ -26,7 +25,7 @@ fun mvvmSimpleXml(
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="${(packageName)}.${activityPrefix}Activity">
+        tools:context="${(packageName)}.${moduleName}Activity">
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -61,7 +60,6 @@ fun mvvmSimpleXml(
 """
 fun mvvmListXml(
         packageName: String,
-        activityPrefix: String,
         moduleName:String
 
 ) = """
@@ -85,7 +83,7 @@ fun mvvmListXml(
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="${(packageName)}.${activityPrefix}Activity">
+        tools:context="${(packageName)}.${moduleName}Activity">
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -141,7 +139,6 @@ fun mvvmListXml(
 """
 fun mvvmTabLayoutXml(
         packageName: String,
-        activityPrefix: String,
         moduleName:String
         
 ) = """
@@ -165,7 +162,7 @@ fun mvvmTabLayoutXml(
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="${(packageName)}.${activityPrefix}Activity">
+        tools:context="${(packageName)}.${moduleName}Activity">
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

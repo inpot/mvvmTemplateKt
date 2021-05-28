@@ -21,17 +21,9 @@ val mvvmActivityTemplate
         val moduleName = stringParameter {
             name = "Module Name"
             default = "Main"
-            help = "Only Prefix , Do not contain \'VM\',\'Module\',\'Repo\',\'Contract\', Plugin will append it "
+            help = "Only Prefix , Do not contain \'Activity\',\'VM\',\'Module\',\'Repo\',\'Contract\', Plugin will append it "
             constraints = listOf(Constraint.NONEMPTY)
             //suggest = { packageName.substring(packageName.indexOfLast { it == '.' }).capitalize()}
-        }
-
-        val activityClass = stringParameter {
-            name = "Activity Class Name"
-            default = "Main"
-            help = "Prefix for Activity, do not contain \'Activity\', Plugin will append it"
-            constraints = listOf(Constraint.NONEMPTY)
-            suggest = {"${moduleName.value.capitalize()}"}
         }
 
         val activityTitle= stringParameter {
@@ -39,7 +31,7 @@ val mvvmActivityTemplate
             default = "MainActivity"
             help = "Title for Activity"
             constraints = listOf(Constraint.NONEMPTY)
-            suggest = { "${activityClass.value}" }
+            suggest = { "${moduleName.value}" }
         }
 
 
@@ -52,9 +44,9 @@ val mvvmActivityTemplate
         val layoutName = stringParameter {
             name = "Layout Name"
             help = "Layout Xml File Name"
-            default = "${activityToLayout(activityClass.value.toLowerCase())}"
+            default = "${activityToLayout(moduleName.value.toLowerCase())}"
             constraints = listOf(Constraint.LAYOUT, Constraint.UNIQUE, Constraint.NONEMPTY)
-            suggest = { "${activityToLayout(activityClass.value.toLowerCase())}" }
+            suggest = { "${activityToLayout(moduleName.value.toLowerCase())}" }
         }
 
         var homeAsUp = booleanParameter {
@@ -68,7 +60,6 @@ val mvvmActivityTemplate
         widgets(
             TextFieldWidget(moduleName),
             TextFieldWidget(activityTitle),
-            TextFieldWidget(activityClass),
             TextFieldWidget(layoutName),
             EnumWidget(activityType),
             CheckBoxWidget(homeAsUp),
@@ -79,7 +70,6 @@ val mvvmActivityTemplate
             mvvmActivityRecipe(
                 moduleName.value.capitalize(),//CapsFirst
                 activityTitle.value,
-                activityClass.value.capitalize(),//CapsFirst
                 layoutName.value,//without Caps Letter,and use "_" to connect word
                 homeAsUp.value,
                 activityType.value,

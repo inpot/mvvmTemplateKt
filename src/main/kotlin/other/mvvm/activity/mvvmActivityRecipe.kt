@@ -13,7 +13,6 @@ import other.mvvm.activity.src.*
 fun RecipeExecutor.mvvmActivityRecipe(
     moduleName:String,//Caps first Letter
     title:String,
-    activityClass:String,//Caps first Letter
     layout:String,
     homeAsUp:Boolean,
     type:ActivityType,
@@ -34,34 +33,35 @@ fun RecipeExecutor.mvvmActivityRecipe(
 //            useMaterial2 = false
 //    )
 
-    val mvvmActivity = mvvmAcitivityKt(moduleName,moduleData.packageName, activityClass, layout, homeAsUp, packageName)
+    val appPkg = moduleData.projectTemplateData.applicationPackage?:"No_appPkg"
+    val mvvmActivity = mvvmAcitivityKt(moduleName,appPkg, layout, homeAsUp, packageName)
     // 保存Activity
-    save(mvvmActivity, srcOut.resolve("${activityClass}Activity.${ktOrJavaExt}"))
+    save(mvvmActivity, srcOut.resolve("${moduleName}Activity.${ktOrJavaExt}"))
     mergeXml(activityStringsXml(layout,title), resOut.resolve("values/strings.xml"))
     // 保存viewmodel
     when(type){
         ActivityType.Simple->{
             save(mvvmSimpleVM(moduleName,packageName), srcOut.resolve("${moduleName}VM.${ktOrJavaExt}"))
-            save(mvvmSimpleXml(packageName, activityClass,moduleName), resOut.resolve("layout/${layout}.xml"))
+            save(mvvmSimpleXml(packageName,moduleName), resOut.resolve("layout/${layout}.xml"))
             save(mvvmSimpleModule(moduleName, packageName), srcOut.resolve("di/${moduleName}Module.${ktOrJavaExt}"))
         }
         ActivityType.TabLayout->{
             save(mvvmTabVM(moduleName,packageName), srcOut.resolve("${moduleName}VM.${ktOrJavaExt}"))
             save(mvvmPageAdapter(moduleName,packageName), srcOut.resolve("${moduleName}PageAdapter.${ktOrJavaExt}"))
-            save(mvvmTabLayoutXml(packageName, activityClass,moduleName), resOut.resolve("layout/${layout}.xml"))
+            save(mvvmTabLayoutXml(packageName,moduleName), resOut.resolve("layout/${layout}.xml"))
             save(mvvmTabModule(moduleName, packageName), srcOut.resolve("di/${moduleName}Module.${ktOrJavaExt}"))
         }
         ActivityType.RecyclerView->{
             save(mvvmListVM(moduleName, packageName), srcOut.resolve("${moduleName}VM.${ktOrJavaExt}"))
             save(mvvmListItemVM(moduleName, packageName), srcOut.resolve("${moduleName}ItemVM.${ktOrJavaExt}"))
-            save(mvvmListXml(packageName, activityClass,moduleName),resOut.resolve("layout/${layout}.xml"))
-            save(mvvmSimpleAdapter(moduleData.packageName,moduleName, packageName), srcOut.resolve("${moduleName}ListAdapter.${ktOrJavaExt}"))
+            save(mvvmListXml(packageName,moduleName),resOut.resolve("layout/${layout}.xml"))
+            save(mvvmSimpleAdapter(appPkg,moduleName, packageName), srcOut.resolve("${moduleName}ListAdapter.${ktOrJavaExt}"))
             save(mvvmItemXml(packageName,moduleName),resOut.resolve("layout/list_item_${moduleName}.xml"))
             save(mvvmListModule(moduleName, packageName), srcOut.resolve("di/${moduleName}Module.${ktOrJavaExt}"))
         }
     }
     // 保存Contract
-    save(mvvmContract(moduleName,activityClass, packageName), srcOut.resolve("di/${moduleName}Constract.${ktOrJavaExt}"))
+    save(mvvmContract(moduleName, packageName), srcOut.resolve("di/${moduleName}Constract.${ktOrJavaExt}"))
     // 保存Module
 
     // 保存repository

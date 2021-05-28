@@ -3,7 +3,6 @@ package other.mvvm.activity.src
 fun mvvmAcitivityKt(
         moduleName:String,
         appPackage:String,
-        activityClass:String,
         layoutName:String,
         homeAsUp:Boolean,
         packageName:String
@@ -21,7 +20,7 @@ import ${(packageName)}.di.${moduleName}Module
 import javax.inject.Inject
 import ${appPackage}.R
 
-class ${activityClass}Activity : BaseActivity(),${moduleName}Contract.View {
+class ${moduleName}Activity : BaseActivity(),${moduleName}Contract.View {
 
     @Inject
     lateinit var vm: ${moduleName}VM
@@ -39,7 +38,7 @@ class ${activityClass}Activity : BaseActivity(),${moduleName}Contract.View {
     companion object {
 
         fun actionStart(context: Context){
-            context.startActivity(Intent(context,${activityClass}Activity::class.java))
+            context.startActivity(Intent(context,${moduleName}Activity::class.java))
         }
 
     }
