@@ -7,6 +7,7 @@ import other.mvvm.activity.res.layout.mvvmListXml
 import other.mvvm.activity.res.layout.mvvmSimpleXml
 import other.mvvm.activity.res.layout.mvvmTabLayoutXml
 import other.mvvm.activity.res.values.activityStringsXml
+import other.mvvm.activity.res.values.manifestFile
 import other.mvvm.activity.src.*
 
 
@@ -19,7 +20,7 @@ fun RecipeExecutor.mvvmActivityRecipe(
     packageName: String,
     moduleData: ModuleTemplateData,
 ) {
-    val (projectData, srcOut, resOut) = moduleData
+    val (projectData, srcOut, resOut,manifestDir) = moduleData
     val ktOrJavaExt = projectData.language.extension
 //    generateManifest(
 //            moduleData = moduleData,
@@ -66,4 +67,7 @@ fun RecipeExecutor.mvvmActivityRecipe(
 
     // 保存repository
     save(mvvmRepo(moduleName, packageName), srcOut.resolve("model/${moduleName}Rep.${ktOrJavaExt}"))
+
+    //merge manifest not working
+    mergeXml(manifestFile(moduleName,packageName, layout), manifestDir.resolve("AndroidManifest.xml") )
 }
