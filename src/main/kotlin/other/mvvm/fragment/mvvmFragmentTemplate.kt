@@ -7,11 +7,11 @@ import other.mvvm.activity.defaultPackageNameParameter
 import other.mvvm.activity.mvvmFragmentRecipe
 
 
-val mvvmFragmentTemplate
+val mvvmFragmentmvvmTemplateKt
     get() = template {
         revision = 1
         name = "MVVM Fragment"
-        description = "适用于https://github.com/inpot/base的MVVM Template"
+        description = "适用于https://github.com/inpot/base的MVVM mvvmTemplateKt"
         minApi = MIN_API
         minBuildApi = MIN_API
 
@@ -68,14 +68,14 @@ val mvvmFragmentTemplate
             PackageNameWidget(currentPkg)
         )
 //        thumb { File("logo.png") }
-        recipe = { data: TemplateData ->
+        recipe = { data: mvvmTemplateKtData ->
             mvvmFragmentRecipe(
                 moduleName.value.capitalize(),//CapsFirst
                 activityTitle.value,
                 layoutName.value,//without Caps Letter,and use "_" to connect word
                 activityType.value,
                 currentPkg.value,
-                data as ModuleTemplateData
+                data as ModulemvvmTemplateKtData
             )
         }
     }

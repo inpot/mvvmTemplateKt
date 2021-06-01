@@ -1,16 +1,16 @@
 
 package  other
-import com.android.tools.idea.wizard.template.Template
-import com.android.tools.idea.wizard.template.WizardTemplateProvider
-import other.mvvm.activity.mvvmActivityTemplate
-import other.mvvm.fragment.mvvmFragmentTemplate
+import com.android.tools.idea.wizard.template.mvvmTemplateKt
+import com.android.tools.idea.wizard.template.WizardmvvmTemplateKtProvider
+import other.mvvm.activity.mvvmActivitymvvmTemplateKt
+import other.mvvm.fragment.mvvmFragmentmvvmTemplateKt
 
-class MvvmPluginTemplateProvider: WizardTemplateProvider(){
+class MvvmPluginmvvmTemplateKtProvider: WizardmvvmTemplateKtProvider(){
 
-    override fun getTemplates(): List<Template> = listOf(
+    override fun getmvvmTemplateKts(): List<mvvmTemplateKt> = listOf(
             // activity的模板
-            mvvmActivityTemplate,
+            mvvmActivitymvvmTemplateKt,
             // fragment的模板
-            mvvmFragmentTemplate
+            mvvmFragmentmvvmTemplateKt
     )
 }

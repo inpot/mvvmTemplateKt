@@ -1,7 +1,7 @@
 package com.github.inpot.mvvmtemplatekt.services
 
-import com.github.inpot.mvvmtemplatekt.MyBundle
 import com.intellij.openapi.project.Project
+import com.github.inpot.mvvmtemplatekt.MyBundle
 
 class MyProjectService(project: Project) {
 
