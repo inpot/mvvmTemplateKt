@@ -3,7 +3,7 @@ package  other
 import com.android.tools.idea.wizard.template.Template
 import com.android.tools.idea.wizard.template.WizardTemplateProvider
 import other.mvvm.activity.mvvmActivityTemplate
-import other.mvvm.activity.mvvmFragmentTemplate
+import other.mvvm.fragment.mvvmFragmentTemplate
 
 class MvvmPluginTemplateProvider: WizardTemplateProvider(){
 
