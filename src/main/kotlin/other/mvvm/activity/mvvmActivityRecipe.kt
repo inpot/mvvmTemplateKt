@@ -1,6 +1,6 @@
 package other.mvvm.activity
 
-import com.android.tools.idea.wizard.template.ModulemvvmTemplateKtData
+import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
 import other.mvvm.activity.res.layout.mvvmItemXml
 import other.mvvm.activity.res.layout.mvvmListXml
@@ -18,7 +18,7 @@ fun RecipeExecutor.mvvmActivityRecipe(
     homeAsUp: Boolean,
     type: ActivityType,
     packageName: String,
-    moduleData: ModulemvvmTemplateKtData,
+    moduleData: ModuleTemplateData,
 ) {
     val (projectData, srcOut, resOut, manifestDir) = moduleData
     val ktOrJavaExt = projectData.language.extension
@@ -34,7 +34,7 @@ fun RecipeExecutor.mvvmActivityRecipe(
 //            useMaterial2 = false
 //    )
 
-    val appPkg = moduleData.projectmvvmTemplateKtData.applicationPackage ?: "No_appPkg"
+    val appPkg = moduleData.projectTemplateData.applicationPackage ?: "No_appPkg"
     val mvvmActivity = mvvmAcitivityKt(moduleName, appPkg, layout, homeAsUp, packageName)
     // 保存Activity
     save(mvvmActivity, srcOut.resolve("${moduleName}Activity.${ktOrJavaExt}"))

@@ -4,11 +4,11 @@ import com.android.tools.idea.wizard.template.*
 import com.android.tools.idea.wizard.template.impl.activities.common.MIN_API
 
 
-val mvvmActivitymvvmTemplateKt
+val mvvmActivityTemplate
     get() = template {
         revision = 1
         name = "MVVM Activity"
-        description = "适用于https://github.com/inpot/base的MVVM mvvmTemplateKt"
+        description = "适用于https://github.com/inpot/base的MVVM Template"
         minApi = MIN_API
         minBuildApi = MIN_API
 
@@ -65,7 +65,7 @@ val mvvmActivitymvvmTemplateKt
             PackageNameWidget(currentPkg)
         )
 //        thumb { File("logo.png") }
-        recipe = { data: mvvmTemplateKtData ->
+        recipe = { data: TemplateData ->
             mvvmActivityRecipe(
                 moduleName.value.capitalize(),//CapsFirst
                 activityTitle.value,
@@ -73,7 +73,7 @@ val mvvmActivitymvvmTemplateKt
                 homeAsUp.value,
                 activityType.value,
                 currentPkg.value,
-                data as ModulemvvmTemplateKtData
+                data as ModuleTemplateData
             )
         }
     }
