@@ -63,7 +63,7 @@ jobs:
             LICENSE
 
           # Run ktlint formatting
-          ./gradlew ktlintFormat
+          #./gradlew ktlintFormat
 
       # Commit modified files
       - name: Commit files
