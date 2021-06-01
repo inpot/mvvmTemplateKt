@@ -1,6 +1,6 @@
 <idea-plugin>
     <id>com.github.inpot.mvvmtemplatekt</id>
-    <name>mvvmTemplateKt</name>
+    <name>mvvmmvvmTemplateKtKt</name>
     <vendor>inpot</vendor>
 
     <!-- Product and plugin compatibility requirements -->
@@ -20,6 +20,6 @@
                   topic="com.intellij.openapi.project.ProjectManagerListener"/>
     </applicationListeners>
     <extensions defaultExtensionNs="com.android.tools.idea.wizard.template">
-        <wizardTemplateProvider implementation="other.MvvmPluginTemplateProvider" />
+        <wizardmvvmTemplateKtProvider implementation="other.MvvmPluginmvvmTemplateKtProvider" />
     </extensions>
 </idea-plugin>
