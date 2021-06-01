@@ -3,6 +3,7 @@ package  other
 import com.android.tools.idea.wizard.template.Template
 import com.android.tools.idea.wizard.template.WizardTemplateProvider
 import other.mvvm.activity.mvvmActivityTemplate
+import other.mvvm.activity.mvvmFragmentTemplate
 
 class MvvmPluginTemplateProvider: WizardTemplateProvider(){
 
@@ -10,6 +11,6 @@ class MvvmPluginTemplateProvider: WizardTemplateProvider(){
             // activity的模板
             mvvmActivityTemplate,
             // fragment的模板
-            //mvvmFragmentTemplate
+            mvvmFragmentTemplate
     )
 }
