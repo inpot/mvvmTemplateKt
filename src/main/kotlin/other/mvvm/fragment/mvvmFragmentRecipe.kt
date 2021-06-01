@@ -2,7 +2,7 @@ package other.mvvm.activity
 
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
-import mvvmItemXml
+import other.mvvm.activity.res.layout.mvvmItemXml
 import other.mvvm.activity.res.values.activityStringsXml
 import other.mvvm.activity.src.*
 import other.mvvm.fragment.res.layout.mvvmListFragmentXml

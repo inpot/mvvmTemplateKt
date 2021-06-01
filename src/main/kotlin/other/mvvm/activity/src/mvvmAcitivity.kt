@@ -1,12 +1,12 @@
 package other.mvvm.activity.src
 
 fun mvvmAcitivityKt(
-        moduleName:String,
-        appPackage:String,
-        layoutName:String,
-        homeAsUp:Boolean,
-        packageName:String
-)="""
+    moduleName: String,
+    appPackage: String,
+    layoutName: String,
+    homeAsUp: Boolean,
+    packageName: String
+) = """
 package ${(packageName)}
 
 import android.content.Context

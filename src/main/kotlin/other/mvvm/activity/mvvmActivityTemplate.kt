@@ -2,7 +2,6 @@ package other.mvvm.activity
 
 import com.android.tools.idea.wizard.template.*
 import com.android.tools.idea.wizard.template.impl.activities.common.MIN_API
-import org.jetbrains.kotlin.util.capitalizeDecapitalize.capitalizeFirstWord
 
 
 val mvvmActivityTemplate
@@ -26,7 +25,7 @@ val mvvmActivityTemplate
             //suggest = { packageName.substring(packageName.indexOfLast { it == '.' }).capitalize()}
         }
 
-        val activityTitle= stringParameter {
+        val activityTitle = stringParameter {
             name = "Title"
             default = "MainActivity"
             help = "Title for Activity"
@@ -79,12 +78,13 @@ val mvvmActivityTemplate
         }
     }
 
-val defaultPackageNameParameter get() = stringParameter {
-            name = "Package name"
-            visible = { !isNewModule }
-            default = "com.mycompany.myapp"
-            constraints = listOf(Constraint.PACKAGE)
-            suggest = { packageName }
-        }
+val defaultPackageNameParameter
+    get() = stringParameter {
+        name = "Package name"
+        visible = { !isNewModule }
+        default = "com.mycompany.myapp"
+        constraints = listOf(Constraint.PACKAGE)
+        suggest = { packageName }
+    }
 
-enum class ActivityType{ Simple,RecyclerView,TabLayout }
+enum class ActivityType { Simple, RecyclerView, TabLayout }

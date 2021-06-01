@@ -2,9 +2,9 @@ package other.mvvm.activity.src
 
 
 fun mvvmRepo(
-        moduleName:String,
-        packageName:String,
-)="""
+    moduleName: String,
+    packageName: String,
+) = """
 package ${(packageName)}.model
 
 import app.base.mvvm.repository.BaseRepository

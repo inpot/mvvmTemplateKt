@@ -1,8 +1,7 @@
 package other.mvvm.activity.src
 
-import other.mvvm.activity.ActivityType
 
-fun mvvmSimpleVM(moduleName: String, packageName: String)="""
+fun mvvmSimpleVM(moduleName: String, packageName: String) = """
 package ${(packageName)}
 
 import android.view.View
@@ -14,7 +13,7 @@ class ${moduleName}VM() :BaseVM<${moduleName}Contract.Repository, ${moduleName}C
 }
 """
 
-fun mvvmTabVM(moduleName: String, packageName: String)="""
+fun mvvmTabVM(moduleName: String, packageName: String) = """
     
 package ${(packageName)}
 
@@ -27,7 +26,8 @@ class ${moduleName}VM() :PagerVM<${moduleName}Contract.Repository, ${moduleName}
 //TODO()
 }
 """
-fun mvvmListVM(moduleName: String, packageName: String)="""
+
+fun mvvmListVM(moduleName: String, packageName: String) = """
 package ${(packageName)}
 
 import android.view.View

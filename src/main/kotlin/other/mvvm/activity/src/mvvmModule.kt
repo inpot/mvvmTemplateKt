@@ -1,9 +1,9 @@
 package other.mvvm.activity.src
 
 fun mvvmSimpleModule(
-        moduleName:String,
-        packageName:String
-)="""
+    moduleName: String,
+    packageName: String
+) = """
 package ${(packageName)}.di
 
 import androidx.fragment.app.Fragment
@@ -33,10 +33,11 @@ class ${moduleName}Module(val view:${moduleName}Contract.View){
 
 }
 """
+
 fun mvvmListModule(
-        moduleName:String,
-        packageName:String
-)="""
+    moduleName: String,
+    packageName: String
+) = """
 package ${(packageName)}.di
 
 import androidx.recyclerview.widget.RecyclerView
@@ -71,10 +72,11 @@ class ${moduleName}Module(val view:${moduleName}Contract.View){
     }
 }
 """
+
 fun mvvmTabModule(
-        moduleName:String,
-        packageName:String
-)="""
+    moduleName: String,
+    packageName: String
+) = """
 package ${(packageName)}.di
 
 import androidx.fragment.app.FragmentManager

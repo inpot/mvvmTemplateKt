@@ -1,9 +1,9 @@
 package other.mvvm.activity.src
 
 fun mvvmContract(
-        moduleName:String,
-        packageName:String
-)="""
+    moduleName: String,
+    packageName: String
+) = """
 package ${(packageName)}.di
 
 import app.base.di.component.ActivityComp

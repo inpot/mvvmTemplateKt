@@ -1,6 +1,6 @@
 package other.mvvm.activity.res.values
 
-fun manifestFile(module:String,currentPkg:String,layout:String)="""
+fun manifestFile(module: String, currentPkg: String, layout: String) = """
 <manifest>
     <application >
         <activity android:name="${currentPkg}.${module}Activity"

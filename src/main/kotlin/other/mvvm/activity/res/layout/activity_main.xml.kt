@@ -1,8 +1,8 @@
 package other.mvvm.activity.res.layout
 
 fun mvvmSimpleXml(
-        packageName: String,
-        moduleName:String
+    packageName: String,
+    moduleName: String
 
 ) = """
 <?xml version="1.0" encoding="utf-8"?>
@@ -58,9 +58,10 @@ fun mvvmSimpleXml(
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
 """
+
 fun mvvmListXml(
-        packageName: String,
-        moduleName:String
+    packageName: String,
+    moduleName: String
 
 ) = """
 <?xml version="1.0" encoding="utf-8"?>
@@ -137,10 +138,11 @@ fun mvvmListXml(
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
 """
+
 fun mvvmTabLayoutXml(
-        packageName: String,
-        moduleName:String
-        
+    packageName: String,
+    moduleName: String
+
 ) = """
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"

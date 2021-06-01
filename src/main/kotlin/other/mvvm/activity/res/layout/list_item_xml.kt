@@ -1,6 +1,8 @@
+package other.mvvm.activity.res.layout
+
 fun mvvmItemXml(
-        packageName: String,
-        moduleName: String
+    packageName: String,
+    moduleName: String
 ) = """
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"

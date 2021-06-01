@@ -1,10 +1,10 @@
 package other.mvvm.activity.src
 
 fun mvvmSimpleAdapter(
-        appPackage:String,
-        moduleName:String,
-        packageName:String
-)="""
+    appPackage: String,
+    moduleName: String,
+    packageName: String
+) = """
 package ${(packageName)}
 
 import android.view.LayoutInflater

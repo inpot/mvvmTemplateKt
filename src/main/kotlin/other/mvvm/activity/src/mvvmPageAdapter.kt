@@ -1,9 +1,9 @@
 package other.mvvm.activity.src
 
 fun mvvmPageAdapter(
-        moduleName:String,
-        packageName:String
-)="""
+    moduleName: String,
+    packageName: String
+) = """
 package ${(packageName)}
 
 import androidx.fragment.app.Fragment
