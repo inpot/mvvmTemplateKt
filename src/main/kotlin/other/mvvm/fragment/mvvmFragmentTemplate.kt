@@ -1,8 +1,10 @@
-package other.mvvm.activity
+package other.mvvm.fragment
 
 import com.android.tools.idea.wizard.template.*
 import com.android.tools.idea.wizard.template.impl.activities.common.MIN_API
-import org.jetbrains.kotlin.util.capitalizeDecapitalize.capitalizeFirstWord
+import other.mvvm.activity.ActivityType
+import other.mvvm.activity.defaultPackageNameParameter
+import other.mvvm.activity.mvvmFragmentRecipe
 
 
 val mvvmFragmentTemplate
