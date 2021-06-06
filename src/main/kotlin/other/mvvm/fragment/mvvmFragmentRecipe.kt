@@ -1,6 +1,6 @@
 package other.mvvm.activity
 
-import com.android.tools.idea.wizard.template.ModulemvvmTemplateKtData
+import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
 import other.mvvm.activity.res.layout.mvvmItemXml
 import other.mvvm.activity.res.values.activityStringsXml
@@ -18,12 +18,12 @@ fun RecipeExecutor.mvvmFragmentRecipe(
     layout:String,
     type:ActivityType,
     packageName: String,
-    moduleData: ModulemvvmTemplateKtData,
+    moduleData: ModuleTemplateData,
 ) {
     val (projectData, srcOut, resOut,manifestDir) = moduleData
     val ktOrJavaExt = projectData.language.extension
 
-    val appPkg = moduleData.projectmvvmTemplateKtData.applicationPackage?:"No_appPkg"
+    val appPkg = moduleData.projectTemplateData.applicationPackage?:"No_appPkg"
     val mvvmFragment = mvvmFragmentKt(moduleName,appPkg, layout, packageName)
     // 保存Fragment
     save(mvvmFragment, srcOut.resolve("${moduleName}Fragment.${ktOrJavaExt}"))

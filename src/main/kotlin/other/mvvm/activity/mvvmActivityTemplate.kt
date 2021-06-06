@@ -65,7 +65,7 @@ val mvvmActivitymvvmTemplateKt
             PackageNameWidget(currentPkg)
         )
 //        thumb { File("logo.png") }
-        recipe = { data: mvvmTemplateKtData ->
+        recipe = { data: TemplateData ->
             mvvmActivityRecipe(
                 moduleName.value.capitalize(),//CapsFirst
                 activityTitle.value,
@@ -73,7 +73,7 @@ val mvvmActivitymvvmTemplateKt
                 homeAsUp.value,
                 activityType.value,
                 currentPkg.value,
-                data as ModulemvvmTemplateKtData
+                data as ModuleTemplateData
             )
         }
     }
