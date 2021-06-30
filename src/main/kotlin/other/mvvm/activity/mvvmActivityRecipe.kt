@@ -2,12 +2,11 @@ package other.mvvm.activity
 
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
+import com.android.tools.idea.wizard.template.impl.activities.common.generateManifest
 import other.mvvm.activity.res.layout.mvvmItemXml
 import other.mvvm.activity.res.layout.mvvmListXml
 import other.mvvm.activity.res.layout.mvvmSimpleXml
 import other.mvvm.activity.res.layout.mvvmTabLayoutXml
-import other.mvvm.activity.res.values.activityStringsXml
-import other.mvvm.activity.res.values.manifestFile
 import other.mvvm.activity.src.*
 
 
@@ -22,23 +21,21 @@ fun RecipeExecutor.mvvmActivityRecipe(
 ) {
     val (projectData, srcOut, resOut, manifestDir) = moduleData
     val ktOrJavaExt = projectData.language.extension
-//    generateManifest(
-//            moduleData = moduleData,
-//            activityClass = "${activityClass}Activity",
-//            activityTitle = activityClass,
-//            packageName = packageName,
-//            isLauncher = false,
-//            hasNoActionBar = false,
-//            generateActivityTitle = true,
-//            requireTheme = false,
-//            useMaterial2 = false
-//    )
+    generateManifest(
+        activityClass = "${moduleName}Activity",
+        activityTitle = title,
+        packageName = packageName,
+        isLauncher = false,
+        hasNoActionBar = true,
+        isNewModule = false,
+        moduleData = moduleData,
+        generateActivityTitle = true,
+    )
 
     val appPkg = moduleData.projectTemplateData.applicationPackage?:"No_AppPkg"
     val mvvmActivity = mvvmAcitivityKt(moduleName, appPkg, layout, homeAsUp, packageName)
     // 保存Activity
     save(mvvmActivity, srcOut.resolve("${moduleName}Activity.${ktOrJavaExt}"))
-    mergeXml(activityStringsXml(layout, title), resOut.resolve("values/strings.xml"))
     // 保存viewmodel
     when (type) {
         ActivityType.Simple -> {
@@ -63,11 +60,7 @@ fun RecipeExecutor.mvvmActivityRecipe(
     }
     // 保存Contract
     save(mvvmContract(moduleName, packageName), srcOut.resolve("di/${moduleName}Constract.${ktOrJavaExt}"))
-    // 保存Module
 
     // 保存repository
     save(mvvmRepo(moduleName, packageName), srcOut.resolve("model/${moduleName}Rep.${ktOrJavaExt}"))
-
-    //merge manifest not working
-    mergeXml(manifestFile(moduleName, packageName, layout), manifestDir.resolve("AndroidManifest.xml"))
 }

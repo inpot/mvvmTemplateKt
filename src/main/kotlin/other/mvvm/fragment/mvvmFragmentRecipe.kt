@@ -52,7 +52,6 @@ fun RecipeExecutor.mvvmFragmentRecipe(
     }
     // 保存Contract
     save(mvvmFragmentContract(moduleName, packageName), srcOut.resolve("di/${moduleName}Constract.${ktOrJavaExt}"))
-    // 保存Module
 
     // 保存repository
     save(mvvmRepo(moduleName, packageName), srcOut.resolve("model/${moduleName}Rep.${ktOrJavaExt}"))
