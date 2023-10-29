@@ -1,7 +1,7 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.github.inpot.mvvmtemplatekt</id>
-    <name>mvvmmvvmTemplateKtKt</name>
+    <name>mvvmmvvmmvvmTemplateKtKtKt</name>
     <vendor>inpot</vendor>
 
     <!-- Product and plugin compatibility requirements -->
@@ -21,6 +21,6 @@
                   topic="com.intellij.openapi.project.ProjectManagerListener"/>
     </applicationListeners>
     <extensions defaultExtensionNs="com.android.tools.idea.wizard.template">
-        <wizardTemplateProvider implementation="other.MvvmPluginTemplateProvider" />
+        <wizardmvvmTemplateKtProvider implementation="other.MvvmPluginmvvmTemplateKtProvider" />
     </extensions>
 </idea-plugin>

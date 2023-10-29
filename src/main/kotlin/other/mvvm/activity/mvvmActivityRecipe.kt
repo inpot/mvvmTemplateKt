@@ -1,6 +1,6 @@
 package other.mvvm.activity
 
-import com.android.tools.idea.wizard.template.ModuleTemplateData
+import com.android.tools.idea.wizard.template.ModulemvvmTemplateKtData
 import com.android.tools.idea.wizard.template.RecipeExecutor
 import com.android.tools.idea.wizard.template.impl.activities.common.generateManifest
 import other.mvvm.activity.res.layout.mvvmItemXml
@@ -17,7 +17,7 @@ fun RecipeExecutor.mvvmActivityRecipe(
     homeAsUp: Boolean,
     type: ActivityType,
     packageName: String,
-    moduleData: ModuleTemplateData,
+    moduleData: ModulemvvmTemplateKtData,
 ) {
     val (projectData, srcOut, resOut, manifestDir) = moduleData
     val ktOrJavaExt = projectData.language.extension
@@ -32,7 +32,7 @@ fun RecipeExecutor.mvvmActivityRecipe(
         generateActivityTitle = true,
     )
 
-    val appPkg = moduleData.projectTemplateData.applicationPackage?:"No_AppPkg"
+    val appPkg = moduleData.projectmvvmTemplateKtData.applicationPackage?:"No_AppPkg"
     val mvvmActivity = mvvmAcitivityKt(moduleName, appPkg, layout, homeAsUp, packageName)
     // 保存Activity
     save(mvvmActivity, srcOut.resolve("${moduleName}Activity.${ktOrJavaExt}"))
