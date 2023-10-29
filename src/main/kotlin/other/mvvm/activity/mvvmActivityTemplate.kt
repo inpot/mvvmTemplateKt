@@ -6,11 +6,11 @@ import com.android.tools.idea.wizard.template.impl.activities.common.MIN_API
 
 val mvvmActivitymvvmTemplateKt
     get() = template {
-        revision = 1
+//        revision = 1
         name = "MVVM Activity"
         description = "适用于https://github.com/inpot/base的MVVM mvvmTemplateKt"
         minApi = MIN_API
-        minBuildApi = MIN_API
+//        minBuildApi = MIN_API
 
         category = Category.Other
         formFactor = FormFactor.Mobile

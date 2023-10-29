@@ -23,7 +23,7 @@ fun RecipeExecutor.mvvmActivityRecipe(
     val ktOrJavaExt = projectData.language.extension
     generateManifest(
         activityClass = "${moduleName}Activity",
-        activityTitle = title,
+//        activityTitle = title,
         packageName = packageName,
         isLauncher = false,
         hasNoActionBar = true,

@@ -9,11 +9,11 @@ import other.mvvm.activity.mvvmFragmentRecipe
 
 val mvvmFragmentmvvmTemplateKt
     get() = template {
-        revision = 1
+//        revision = 1
         name = "MVVM Fragment"
         description = "适用于https://github.com/inpot/base的MVVM mvvmTemplateKt"
         minApi = MIN_API
-        minBuildApi = MIN_API
+//        minBuildApi = MIN_API
 
         category = Category.Other
         formFactor = FormFactor.Mobile
